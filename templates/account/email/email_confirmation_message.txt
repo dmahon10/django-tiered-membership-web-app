@@ -1,0 +1,18 @@
+{% load account %}
+
+{% user_display user as user_display %}
+{% load i18n %}
+{% autoescape off %}
+
+{% blocktrans with site_name=current_site.name site_domain=current_site.domain %}
+
+Hello from {{ site_name }}!
+Click here to verify your email address {{ activate_url }}
+
+{% endblocktrans %}
+{% endautoescape %}
+{% blocktrans with site_name=current_site.name site_domain=current_site.domain %}
+If you did not make an account at {{ site_name }}, please disreagrd this email.
+
+{{ site_domain }}
+{% endblocktrans %}

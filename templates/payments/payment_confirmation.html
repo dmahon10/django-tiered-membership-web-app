@@ -1,0 +1,10 @@
+{% extends '_base.html' %}
+{% block title %}Payment Confirmed!{% endblock title %}
+{% block content %}
+{% csrf_token %}
+<h2>
+    Thank you for your order! You now have access to 
+    <a href="{% url 'premium_article_list' %}">all premium articles!</a>.
+</h2> 
+
+{% endblock content %}
