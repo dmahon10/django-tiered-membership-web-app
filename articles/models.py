@@ -22,7 +22,7 @@ class Article(models.Model):
     slug = models.SlugField(editable=False)
     author = models.CharField(max_length=100)
     excerpt = models.TextField(max_length=300)
-    thumbnail = models.ImageField(upload_to='thumbnails/', blank=True)
+    thumbnail = models.ImageField(upload_to='thumbnails/')
     content = RichTextUploadingField()
     date_created = models.DateTimeField(default=datetime.now)
     

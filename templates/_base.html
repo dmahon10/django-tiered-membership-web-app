@@ -12,26 +12,41 @@
 <body>
   <header>
     <!-- navbar -->
-
-    <nav class="navbar navbar-light bg-light justify-content-between">
-      <a href="{% url 'home' %}" class="navbar-brand">The World Times</a>
- 
-        <a class="nav-link p-2 text-dark" href="{% url 'free_article_list' %}">Free Articles</a>
-        <a class="nav-link p-2 text-dark" href="{% url 'premium_article_list' %}"> Premium Articles</a>
-        {% if user.is_authenticated %}
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-5">
+      <a class="navbar-brand" href="{% url 'home' %}">The World Times</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
     
-            <a class="nav-link p-2 text-dark" href="{% url 'account_logout' %}">Log Out</a>
- 
-        {% else %}
-          <a class="nav-link p-2 text-dark" href="{% url 'account_login' %}">Log In</a>
-          <a class="nav-link" href="{% url 'account_signup' %}">Sign Up</a>
-        {% endif %}
-     
-      
-      <form class="form-inline mt-2 mt-md-0" action="{% url 'search_results' %}" method="get">
-        <input name="q" class="form-control mr-sm-2" type="text" placeholder="Search All Articles"
-        aria-label="Search">
-      </form>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'home' %}">Home <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'free_article_list' %}">Free Articles</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link " href="{% url 'premium_article_list' %}">Premium Articles</a>
+          </li>
+          {% if user.is_authenticated %}
+          <li class="nav-item">
+            <a class="nav-link " href="{% url 'account_logout' %}">Log Out</a>
+          </li>
+          {% else %}
+          <li class="nav-item">
+            <a class="nav-link " href="{% url 'account_login' %}">Log In</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link " href="{% url 'account_signup' %}">Sign Up</a>
+          </li>
+          {% endif %}
+        </ul>
+        <form class="form-inline" action="{% url 'search_results' %}" method="get">
+          <input name="q" class="form-control mr-sm-2" type="text" placeholder="Search All Articles"
+          aria-label="Search">
+        </form>
+      </div>
     </nav>
   </header>
   <div class="container">

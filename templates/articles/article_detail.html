@@ -5,21 +5,51 @@
 {% endblock title %}
 
 {% block content %}
-<div class="article-detail">
-    <img class="thumbnail" src="{{ article.thumbnail.url}}" alt="{{ article.title }}">
-    <h2>
-        <a href="">{{ article.title }}</a>
-    </h2> 
-    <p>Author: {{ article.author }}</p>
-    <p>Excerpt: {{ article.excerpt }}</p>
-
-    <div>
-        <h3>Comments</h3> 
-        <ul>
-            {% for comment in article.comments.all %}
-                <li>{{ comment.comment }} ({{ comment.user }})</li> 
-            {% endfor %}
-        </ul> 
+<div class="contianer">
+    <div class="row">
+        <div class="col col-1"></div>
+        <div class="col col-10">
+            <div class="embed-responsive embed-responsive-1by1">
+                <img class="thumbnail embed-responsive-item" src="{{ article.thumbnail.url }}"  alt="{{ article.title }}">
+            </div>
+            <img class="thumbnail" src="{{ article.thumbnail.url }}" alt="{{ article.title }}">
+            <br>
+            <br>
+            <h2>
+                <a href="">{{ article.title }}</a>
+            </h2> 
+            <br>
+            <h4>{{ article.excerpt }}</h4>
+            <br>
+            <p>By: {{ article.author }}</p>
+            <br>
+            <div>
+                {% autoescape off %}
+                {{ article.content }}
+                {% endautoescape %}
+            </div>
+            <br>
+            <hr>
+            <br>
+            <div class="container">
+                <div class="row">
+                    <div class="col col-8">
+                        <h2>Comments</h2> 
+                    </div>
+                </div>
+                <div class="row xs-8">
+                    <div class="col col-8">
+                        <ul>
+                            {% for comment in article.comments.all %}
+                                <li>{{ comment.comment }} ({{ comment.user }})</li> 
+                            {% endfor %}
+                        </ul> 
+                    </div>
+                </div>
+        </div>
+        <div class="col col-1"></div>
     </div>
+    
 </div>
+<div style="height: 100px;"></div>
 {% endblock content %}
