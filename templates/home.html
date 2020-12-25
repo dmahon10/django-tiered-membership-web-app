@@ -43,8 +43,8 @@
     <br>
     {% if not perms.articles.premium_member %}
     <li>
-        <a href="{% url 'payment' %}">Submit a mock payment via Stripe</a> to gain access to "premium" articles.
-        You can use 4242 4242 4242 4242 as the credit card number and 123 as the CVV. Pick a expirary date in future.
+        <a href="{% url 'account_login' %}">Login</a> and submit a mock payment via Stripe to gain access to "premium" articles.
+        You can use <strong>4242 4242 4242 4242</strong> for the credit card number and <strong>123</strong> for the CVV. Pick a expirary date in future.
     </li>
     {% else %}
     <li>
