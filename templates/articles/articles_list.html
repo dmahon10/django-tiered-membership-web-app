@@ -23,6 +23,7 @@
             <div class="card-body">
                 <h5 class="card-title">{{ article.title }}</h5>
                 <p class="card-text">By: {{ article.author }}</p>
+                <p class="card-text">{{ article.date_created }}</p>
                 <p class="card-text">{{ article.excerpt }}</p>
                 {% if not perms.articles.premium_member and request.path == "/articles/premium/" %}
                     <a href="{% url 'payment' %}" class="btn btn-success mb-5" >Upgrade to Premium to Read</a>

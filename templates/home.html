@@ -7,6 +7,7 @@
 
 <h1>The World Times</h1>
 <h3>A Django project</h3>
+<hr>
 <br>
 
 {% if user.is_authenticated %}
@@ -17,7 +18,7 @@
 {% endif %}
 
 <h3>Welcome to The World Times.</h3>
-<p>This is a live demo of a production grade django backend.</p>
+<p>This is a live demo of a production grade django backend for a freemium model online publication.</p>
 <br>
 {% if user.is_authenticated %}
     <h4>Thank you for signing up! Please explore this app's functionality.</h4>
@@ -53,8 +54,8 @@
     {% endif %}
     <br>
     <li>
-        User commenting from the frontend has been disabled so that I don't have to maintain this demo. See CMS demo video 
-        for commenting functionality.
+        The user commenting interface has been disabled to limit the maintenence requirements of this demo. See the demo video 
+        for a walkthrough of adding comments from the backend.
     </li>
 </ul> 
 <hr>
