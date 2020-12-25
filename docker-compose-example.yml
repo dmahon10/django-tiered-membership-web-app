@@ -1,0 +1,47 @@
+version: "3.8"
+   
+services:
+  db:
+    image: postgres
+    environment:
+      - POSTGRES_DB=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    volumes:
+        - postgres_data:/var/lib/postgresql/data/
+
+  web:
+    build: .
+    command: python manage.py runserver 0.0.0.0:8000
+    #command: gunicorn news_outlet.wsgi -b 0.0.0.0:8000 # To use gunicorn locally
+    environment: 
+      - ENVIRONMENT=development # 'production' for production security settings
+      # Must escape '$' with a preceding '$' eg. $$
+      - SECRET_KEY=<insert-your-secret-key>
+      - DEBUG=1 # 0 in production
+      # Payments
+      - STRIPE_TEST_PUBLISHABLE_KEY=
+      - STRIPE_TEST_SECRET_KEY=
+      # Static files cloud storage
+      - USE_S3=0 # 1 to use S3
+      - AWS_ACCESS_KEY_ID=
+      - AWS_SECRET_ACCESS_KEY=
+      - AWS_STORAGE_BUCKET_NAME=
+      # Emails -- configure for your service provider
+      - EMAIL=1
+      - EMAIL_HOST=smtp.gmail.com
+      - EMAIL_USE_TLS=1
+      - EMAIL_PORT=587
+      - EMAIL_HOST_USER=<your-email-address>
+      - EMAIL_HOST_PASSWORD=<your-email-account-password>
+  
+     
+    volumes:
+      - .:/code
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+
+volumes:
+    postgres_data:
