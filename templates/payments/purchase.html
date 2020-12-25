@@ -5,7 +5,7 @@
 {% block content %}
 
     <h1>Payments page</h1>
-    <p>Lifetime membership for $34.99</p>
+    <p>Uprade to premium for $34.99 and get access to all premium content.</p>
     <p>You can use 4242 4242 4242 4242 as the credit card number and 123 as the CVV. Pick a expirary date in future.</p>
     <form action="{% url 'pay' %}" method="post">
         {% csrf_token %}

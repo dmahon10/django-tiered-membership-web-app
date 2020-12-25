@@ -2,7 +2,11 @@
 {% block title %}Search{% endblock title %}
 {% block content %} <h1>Search Results</h1>
 {% for article in article_list %} <div>
-<h3><a href="{{ article.get_absolute_url }}">{{ article.title }}</a></h3> 
+    {% if not perms.articles.premium_member and article.tier == "premium" %}
+        <h3><a href="{% url 'payment' %}">{{ article.title }}</a></h3>
+    {% else %}
+        <h3><a href="{{ article.get_absolute_url }}">{{ article.title }}</a></h3> 
+    {% endif %}
 <p>Author: {{ article.author }}</p>
 <p class="">Tier: {{ article.tier }}</p>
 <hr>
